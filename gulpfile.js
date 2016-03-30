@@ -20,7 +20,7 @@ elixir(function(mix) {
 });
 
 elixir(function(mix) {
-    mix.browserify('main.js', dest + 'js/bundle.js', null, {
+    mix.browserify('elephant.js', dest + 'js/bundle.js', null, {
         global: true
     });
 });

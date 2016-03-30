@@ -10,13 +10,18 @@ body {
 	height: 600px;
 	display: inline-block;
 	background-color: red;
+	margin: 0 10px;
 	padding: 20px;
+	vertical-align: top;
+	color: pink;
 }
 #middle{
-	width:25%;
-	height: 600px;
-	background-color: pink;
+	width:30%;
+	margin: 0 10px;
+	height: 640px;
+	background-color: white;
 	display: inline-block;
+	vertical-align: top;
 	text-align: center;
 }
 #right {
@@ -24,6 +29,8 @@ body {
 	height: 600px;
 	display: inline-block;
 	background-color: green;
+	margin: 0 10px;
 	padding: 20px;
+	vertical-align: top;
 }
 /*# sourceMappingURL=style.css.map */

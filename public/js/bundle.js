@@ -19036,43 +19036,54 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Comment = React.createClass({
-	displayName: 'Comment',
+var Message = React.createClass({
+	displayName: 'Message',
 
 	render: function render() {
-		return React.createElement('div', { className: 'formBox' }, React.createElement('h1', null, 'Comments'), React.createElement(Form, null));
+		return React.createElement('div', null, this.props.text);
 	}
 });
 
-var Form = React.createClass({
-	displayName: 'Form',
+var Input = React.createClass({
+	displayName: 'Input',
 
-	getInitialState: function getInitialState() {
-		return {
-			text: ''
-		};
-	},
-	handleTextChange: function handleTextChange(e) {
-		this.setState({
-			text: e.target.value
-		});
-		document.getElementById('left').innerHTML = this.state.text;
+	inputChange: function inputChange(e) {
+		this.props.onChange(e.target.value);
 	},
 	handleSubmit: function handleSubmit(e) {
 		e.preventDefault();
-		this.setState({ text: '' });
+		this.props.text = '';
 	},
 	render: function render() {
-		return React.createElement('form', { id: 'Form', onSubmit: this.handleSubmit }, React.createElement('input', {
-			type: 'text',
-			placeholder: 'Say something...',
-			value: this.state.text,
-			onChange: this.handleTextChange
-		}), React.createElement('input', { type: 'submit', value: 'Post' }));
+		return React.createElement('form', { onSubmit: this.handleSubmit }, React.createElement('input', { onChange: this.inputChange, value: this.props.text }), React.createElement('button', { type: 'submit' }, 'Envoi la sauce'));
+	}
+});
+var Drapeau = React.createClass({
+	displayName: 'Drapeau',
+
+	getInitialState: function getInitialState() {
+		return { text: '' };
+	},
+	onChange: function onChange(text) {
+		this.setState({ text: text });
+	},
+	render: function render() {
+		return React.createElement('div', { className: 'container' }, React.createElement('div', { id: 'hello' }), React.createElement('div', { id: 'left' }, React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'middle' }, React.createElement(Container, { onChange: this.onChange }), React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'right' }, React.createElement(Message, { text: this.state.text })));
 	}
 });
 
-ReactDOM.render(React.createElement(Comment, null), document.getElementById('middle'));
+var Container = React.createClass({
+	displayName: 'Container',
+
+	getInitialState: function getInitialState() {
+		return { text: '' };
+	},
+	render: function render() {
+		return React.createElement('div', { className: 'box' }, React.createElement('h3', null, ' coucou '), React.createElement(Input, { value: this.state.text, onChange: this.props.onChange }));
+	}
+});
+
+ReactDOM.render(React.createElement(Drapeau, null), document.getElementById('big'));
 
 },{"react":158,"react-dom":29}]},{},[159]);
 
