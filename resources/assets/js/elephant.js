@@ -17,7 +17,7 @@ var Input = React.createClass({
 	},
 	handleSubmit : function(e) {
 		e.preventDefault();
-		this.props.text = '';
+		this.setState({text: ' '});
 	},
 	render : function() {
 		return (
@@ -41,7 +41,7 @@ var Drapeau = React.createClass({
 			<div id="hello"></div>
 			<div id="left"><Message text={this.state.text}/></div>
 			<div id="middle"><Container onChange={this.onChange}/><Message text={this.state.text}/></div>
-			<div id="right"><Message text={this.state.text}/></div>
+			<div id="right"></div>
 		</div>
 		);
 	}
@@ -54,13 +54,23 @@ var Container = React.createClass({
 	render : function() {
 		return (
 			<div className="box">
-				<h3> coucou </h3>
+				<h3> Try it ! </h3>
 				<Input value={this.state.text} onChange={this.props.onChange}/>
 			</div>
 		);
 	}
 });
 
+// var MessageList = React.createClass({
+// 	render : function() {
+// 			var messageNodes = this.props.text.map(function(message) {
+// 				return ( <Message text={message.text}> {message.text} </Message>);
+// 			});
+// 		return (
+// 			 <div className="MessageList"> {messageNodes}</div> 
+// 		);
+// 	}
+// });
 
 ReactDOM.render(
 	<Drapeau />,

@@ -19052,7 +19052,7 @@ var Input = React.createClass({
 	},
 	handleSubmit: function handleSubmit(e) {
 		e.preventDefault();
-		this.props.text = '';
+		this.setState({ text: ' ' });
 	},
 	render: function render() {
 		return React.createElement('form', { onSubmit: this.handleSubmit }, React.createElement('input', { onChange: this.inputChange, value: this.props.text }), React.createElement('button', { type: 'submit' }, 'Envoi la sauce'));
@@ -19068,7 +19068,7 @@ var Drapeau = React.createClass({
 		this.setState({ text: text });
 	},
 	render: function render() {
-		return React.createElement('div', { className: 'container' }, React.createElement('div', { id: 'hello' }), React.createElement('div', { id: 'left' }, React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'middle' }, React.createElement(Container, { onChange: this.onChange }), React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'right' }, React.createElement(Message, { text: this.state.text })));
+		return React.createElement('div', { className: 'container' }, React.createElement('div', { id: 'hello' }), React.createElement('div', { id: 'left' }, React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'middle' }, React.createElement(Container, { onChange: this.onChange }), React.createElement(Message, { text: this.state.text })), React.createElement('div', { id: 'right' }));
 	}
 });
 
@@ -19079,9 +19079,20 @@ var Container = React.createClass({
 		return { text: '' };
 	},
 	render: function render() {
-		return React.createElement('div', { className: 'box' }, React.createElement('h3', null, ' coucou '), React.createElement(Input, { value: this.state.text, onChange: this.props.onChange }));
+		return React.createElement('div', { className: 'box' }, React.createElement('h3', null, ' Try it ! '), React.createElement(Input, { value: this.state.text, onChange: this.props.onChange }));
 	}
 });
+
+// var MessageList = React.createClass({
+// 	render : function() {
+// 			var messageNodes = this.props.text.map(function(message) {
+// 				return ( <Message text={message.text}> {message.text} </Message>);
+// 			});
+// 		return (
+// 			 <div className="MessageList"> {messageNodes}</div>
+// 		);
+// 	}
+// });
 
 ReactDOM.render(React.createElement(Drapeau, null), document.getElementById('big'));
 
